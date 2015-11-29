@@ -1,18 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO.MemoryMappedFiles;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using FetchMe.Logic.Interface;
 using FetchMe.Service.Models;
+using Microsoft.Practices.Unity;
 
 namespace FetchMe.Service.Controllers
 {
     public class CrawlerController : ApiController
     {
-	    public void AddGame([FromBody]Game game)
+	    public IHttpActionResult AddGame([FromBody]Game game)
 	    {
-			throw new NotImplementedException();
+		    if (game == null)
+		    {
+			    return BadRequest();
+		    }
+
+		    try
+			{
+				var gameValidator = WebApiApplication.Container.Resolve<IGameValidation>();
+				var gameDto = Mapper.Map(game);
+				return gameValidator.ValidateAndAdd(gameDto)
+					? Ok() as IHttpActionResult
+					: BadRequest();
+			}
+		    catch (Exception exception)
+		    {
+				return InternalServerError(exception);
+		    }
 	    }
     }
 }

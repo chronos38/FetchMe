@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interface\IGameValidation.cs" />
     <Compile Include="Interface\IProbabiltyStrategy.cs" />
     <Compile Include="Interface\ITeamNameResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

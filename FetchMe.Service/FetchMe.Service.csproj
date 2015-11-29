@@ -107,6 +107,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Mapper.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\GameData.cs" />
     <Compile Include="Models\Goal.cs" />

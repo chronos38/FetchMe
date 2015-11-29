@@ -1,5 +1,4 @@
 ﻿using FetchMe.Dto;
-using System;
 
 namespace FetchMe.Logic.Interface
 {
