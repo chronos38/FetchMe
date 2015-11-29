@@ -7,7 +7,7 @@ namespace FetchMe.Dto
 	public class GameDataDto
 	{
 		public int Id { get; set; }
-		public string ClubName { get; set; }
+		public TeamDto Team { get; set; }
 		public IEnumerable<TeamMemberDto> Lineup { get; set; }
 		public IEnumerable<ReplacementDto> Replacements { get; set; }
 		public IEnumerable<TeamMemberDto> YellowCards { get; set; }

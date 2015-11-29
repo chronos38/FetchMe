@@ -45,6 +45,7 @@
     <Compile Include="GoalDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReplacementDto.cs" />
+    <Compile Include="TeamDto.cs" />
     <Compile Include="TeamMemberDto.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

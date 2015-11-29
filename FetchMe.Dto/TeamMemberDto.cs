@@ -6,7 +6,7 @@ namespace FetchMe.Dto
 	public class TeamMemberDto
 	{
 		public int Id { get; set; }
-		public string Club { get; set; }
+		public TeamDto Team { get; set; }
 		public string Name { get; set; }
 	}
 }
