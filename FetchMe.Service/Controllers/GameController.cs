@@ -9,17 +9,17 @@ namespace FetchMe.Service.Controllers
 {
     public class GameController : ApiController
     {
-	    public float ComputeProbability(string fromFirstTeam, string againstSecondTeam)
+	    public IHttpActionResult ComputeProbability(string fromFirstTeam, string againstSecondTeam)
 	    {
 		    throw new NotImplementedException();
 	    }
 
-		public float ComputeProbability(string fromFirstTeam, string againstSecondTeam, DateTime startingFromDate)
+		public IHttpActionResult ComputeProbability(string fromFirstTeam, string againstSecondTeam, DateTime startingFromDate)
 		{
 			throw new NotImplementedException();
 		}
 
-		public float ComputeProbability(string fromFirstTeam, string againstSecondTeam, DateTime startingFromDate, DateTime endOnDate)
+		public IHttpActionResult ComputeProbability(string fromFirstTeam, string againstSecondTeam, DateTime startingFromDate, DateTime endOnDate)
 		{
 			throw new NotImplementedException();
 		}

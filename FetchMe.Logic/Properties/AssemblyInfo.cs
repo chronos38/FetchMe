@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("FetchMe.Core.Interface")]
+[assembly: AssemblyTitle("FetchMe.Logic")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("FetchMe.Core.Interface")]
+[assembly: AssemblyProduct("FetchMe.Logic")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("5c72e06e-5ad9-4ba7-a03d-36d0064420f9")]
+[assembly: Guid("cbe926e8-6858-475b-af4f-37fff5943eb4")]
 
 // Version information for an assembly consists of the following four values:
 //

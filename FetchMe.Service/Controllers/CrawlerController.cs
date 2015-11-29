@@ -10,7 +10,7 @@ namespace FetchMe.Service.Controllers
 {
     public class CrawlerController : ApiController
     {
-	    public void AddGame(Game game)
+	    public void AddGame([FromBody]Game game)
 	    {
 			throw new NotImplementedException();
 	    }

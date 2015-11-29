@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FetchMe.Core.Interface
+namespace FetchMe.Logic
 {
     public class Class1
     {

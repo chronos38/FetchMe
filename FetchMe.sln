@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FetchMe.Core.Interface", "FetchMe.Core.Interface\FetchMe.Core.Interface.csproj", "{5C72E06E-5AD9-4BA7-A03D-36D0064420F9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FetchMe.DataAccess.Interface", "FetchMe.DataAccess.Interface\FetchMe.DataAccess.Interface.csproj", "{5D45B891-6B0B-4BCB-8B79-8BBD92831EBC}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FetchMe.Dto", "FetchMe.Dto\FetchMe.Dto.csproj", "{DFCD2A3D-895D-42FA-8C4E-24BB38B744D2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FetchMe.Service", "FetchMe.Service\FetchMe.Service.csproj", "{F566FC5D-1E1F-47D6-B830-A1B74987482F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FetchMe.Service.Tests", "FetchMe.Service.Tests\FetchMe.Service.Tests.csproj", "{4B4BCEC7-1199-4BE2-9D32-03F4A913E1B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FetchMe.Logic", "FetchMe.Logic\FetchMe.Logic.csproj", "{CBE926E8-6858-475B-AF4F-37FFF5943EB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FetchMe.Data", "FetchMe.Data\FetchMe.Data.csproj", "{918015F3-F3BC-4364-AE8E-A62A50DF43F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5C72E06E-5AD9-4BA7-A03D-36D0064420F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5C72E06E-5AD9-4BA7-A03D-36D0064420F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5C72E06E-5AD9-4BA7-A03D-36D0064420F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5C72E06E-5AD9-4BA7-A03D-36D0064420F9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5D45B891-6B0B-4BCB-8B79-8BBD92831EBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5D45B891-6B0B-4BCB-8B79-8BBD92831EBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5D45B891-6B0B-4BCB-8B79-8BBD92831EBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5D45B891-6B0B-4BCB-8B79-8BBD92831EBC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DFCD2A3D-895D-42FA-8C4E-24BB38B744D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DFCD2A3D-895D-42FA-8C4E-24BB38B744D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFCD2A3D-895D-42FA-8C4E-24BB38B744D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +31,14 @@ Global
 		{4B4BCEC7-1199-4BE2-9D32-03F4A913E1B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B4BCEC7-1199-4BE2-9D32-03F4A913E1B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B4BCEC7-1199-4BE2-9D32-03F4A913E1B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBE926E8-6858-475B-AF4F-37FFF5943EB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBE926E8-6858-475B-AF4F-37FFF5943EB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBE926E8-6858-475B-AF4F-37FFF5943EB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBE926E8-6858-475B-AF4F-37FFF5943EB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{918015F3-F3BC-4364-AE8E-A62A50DF43F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{918015F3-F3BC-4364-AE8E-A62A50DF43F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{918015F3-F3BC-4364-AE8E-A62A50DF43F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{918015F3-F3BC-4364-AE8E-A62A50DF43F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
