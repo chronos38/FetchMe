@@ -16,13 +16,17 @@ namespace FetchMe.Service.Controllers
 		    }
 
 		    try
-			{
-				var gameValidator = WebApiApplication.Container.Resolve<IGameValidation>();
-				var gameDto = Mapper.Map(game);
-				return gameValidator.ValidateAndAdd(gameDto)
-					? Ok() as IHttpActionResult
-					: BadRequest();
-			}
+		    {
+			    var gameValidator = WebApiApplication.Container.Resolve<IGameValidation>();
+			    var gameDto = Mapper.Map(game);
+			    return gameValidator.ValidateAndAdd(gameDto)
+				    ? Ok() as IHttpActionResult
+				    : BadRequest();
+		    }
+		    catch (ServiceException exception)
+		    {
+			    return BadRequest(exception.Message);
+		    }
 		    catch (Exception exception)
 		    {
 				return InternalServerError(exception);

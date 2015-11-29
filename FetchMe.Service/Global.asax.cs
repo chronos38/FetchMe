@@ -13,6 +13,7 @@ namespace FetchMe.Service
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
 	        Container = new UnityContainer().LoadConfiguration();
+	        Mapper.Configure();
         }
     }
 }

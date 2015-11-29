@@ -32,7 +32,9 @@ namespace FetchMe.Service.Controllers
 
 				var probabilityUnit = WebApiApplication.Container.Resolve<IProbabiltyStrategy>();
 				var result = probabilityUnit.Compute(team1, team2);
-				return result == null ? (IHttpActionResult)NotFound() : Ok(result.Value);
+				return result == null
+					? NotFound() as IHttpActionResult
+					: Ok(result.Value);
 			}
 		    catch (Exception exception)
 		    {
