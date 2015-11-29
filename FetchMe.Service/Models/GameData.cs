@@ -4,7 +4,7 @@ namespace FetchMe.Service.Models
 {
 	public class GameData
 	{
-		public string ClubName { get; set; }
+		public Team Team { get; set; }
 		public IEnumerable<TeamMember> Lineup { get; set; }
 		public IEnumerable<Replacement> Replacements { get; set; }
 		public IEnumerable<TeamMember> YellowCards { get; set; }
