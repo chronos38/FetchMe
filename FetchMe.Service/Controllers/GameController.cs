@@ -16,7 +16,7 @@ namespace FetchMe.Service.Controllers
 
 		    try
 			{
-				var teamNameResolver = WebApiApplication.Container.Resolve<ITeamNameResolver>();
+				var teamNameResolver = Application.Container.Resolve<ITeamNameResolver>();
 
 				var team1 = teamNameResolver.ResolveTeamName(fromFirstTeam);
 				if (team1 == null)
@@ -30,7 +30,7 @@ namespace FetchMe.Service.Controllers
 					return NotFound();
 				}
 
-				var probabilityUnit = WebApiApplication.Container.Resolve<IProbabiltyStrategy>();
+				var probabilityUnit = Application.Container.Resolve<IProbabilityStrategy>();
 				var result = probabilityUnit.Compute(team1, team2);
 				return result == null
 					? NotFound() as IHttpActionResult

@@ -45,8 +45,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interface\IGameValidation.cs" />
-    <Compile Include="Interface\IProbabiltyStrategy.cs" />
+    <Compile Include="Interface\IProbabilityStrategy.cs" />
     <Compile Include="Interface\ITeamNameResolver.cs" />
+    <Compile Include="LogicException.cs" />
+    <Compile Include="ProbabilityStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

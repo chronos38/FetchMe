@@ -5,7 +5,7 @@ using Microsoft.Practices.Unity.Configuration;
 
 namespace FetchMe.Service
 {
-    public class WebApiApplication : HttpApplication
+    public class Application : HttpApplication
     {
 		public static IUnityContainer Container { get; set; }
 

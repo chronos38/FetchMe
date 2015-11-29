@@ -17,7 +17,7 @@ namespace FetchMe.Service.Controllers
 
 		    try
 		    {
-			    var gameValidator = WebApiApplication.Container.Resolve<IGameValidation>();
+			    var gameValidator = Application.Container.Resolve<IGameValidation>();
 			    var gameDto = Mapper.Map(game);
 			    return gameValidator.ValidateAndAdd(gameDto)
 				    ? Ok() as IHttpActionResult
