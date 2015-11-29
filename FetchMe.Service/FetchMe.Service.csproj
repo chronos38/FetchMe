@@ -61,14 +61,11 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Service1.svc" />
+    <Content Include="CrawlerService.svc" />
+    <Content Include="GameService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Service1.svc.cs">
-      <DependentUpon>Service1.svc</DependentUpon>
-    </Compile>
-    <Compile Include="IService1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -83,13 +80,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FetchMe.Service.Shared.Interface\FetchMe.Service.Shared.Interface.csproj">
+    <ProjectReference Include="..\FetchMe.Service.Interface\FetchMe.Service.Interface.csproj">
       <Project>{24b2f704-d3d3-4a8a-81f9-648cbb393acc}</Project>
-      <Name>FetchMe.Service.Shared.Interface</Name>
+      <Name>FetchMe.Service.Interface</Name>
     </ProjectReference>
-    <ProjectReference Include="..\FetchMe.Service.Shared.Logic\FetchMe.Service.Shared.Logic.csproj">
+    <ProjectReference Include="..\FetchMe.Service.Logic\FetchMe.Service.Logic.csproj">
       <Project>{b06f8f68-9c74-44bb-ab91-1b65a01b16a7}</Project>
-      <Name>FetchMe.Service.Shared.Logic</Name>
+      <Name>FetchMe.Service.Logic</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
