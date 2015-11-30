@@ -1,18 +1,24 @@
 ﻿using System;
+using FetchMe.Data.Interface;
 using FetchMe.Dto;
 using FetchMe.Logic;
 using FetchMe.Logic.Interface;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 
 namespace FetchMe.Service.Tests
 {
 	internal class ProbabilityStrategyTestContract
 	{
+		private Mock<IGameRepository> Mock;
+
 		private IProbabilityStrategy ProbabilityStrategy { get; set; }
 
-		public ProbabilityStrategyTestContract(IProbabilityStrategy probabiltyStrategy)
+		public ProbabilityStrategyTestContract(Mock<IGameRepository> mock, IProbabilityStrategy probabilityStrategy)
 		{
-			ProbabilityStrategy = probabiltyStrategy;
+			Mock = mock;
+			ProbabilityStrategy = probabilityStrategy;
+			// TODO: Setup mock
 		}
 
 		public bool ExpectThrowIfFirstTeamIsNotValid()
@@ -61,7 +67,8 @@ namespace FetchMe.Service.Tests
 		[TestMethod]
 		public void TestClass_ProbabilityStrategy()
 		{
-			var adapter = new ProbabilityStrategyTestContract(new ProbabilityStrategy());
+			var mock = new Mock<IGameRepository>();
+			var adapter = new ProbabilityStrategyTestContract(mock, new ProbabilityStrategy(mock.Object));
 			Assert.IsTrue(adapter.ExpectThrowIfFirstTeamIsNotValid());
 			Assert.IsTrue(adapter.ExpectThrowIfSecondTeamIsNotValid());
 			Assert.AreEqual(0.5f, adapter.ShouldReturn50ForEqualTeams());
