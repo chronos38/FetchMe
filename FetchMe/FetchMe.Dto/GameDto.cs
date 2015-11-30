@@ -11,6 +11,7 @@ namespace FetchMe.Dto
 		public int Minutes { get; set; }
 		public ScoreDto Score { get; set; }
 		public IEnumerable<GoalDto> Goals { get; set; }
-		public IEnumerable<GameDataDto> Data { get; set; }
+		public GameDataDto Team1 { get; set; }
+		public GameDataDto Team2 { get; set; }
 	}
 }
