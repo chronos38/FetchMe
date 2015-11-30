@@ -43,12 +43,14 @@ namespace FetchMe.Logic
 
 		public float Compute(TeamDto teamToCheck, TeamDto againstTeam)
 		{
-			// Use divide and conquer for efficiency
-			var bothPointsTask = GetPointsAsync(teamToCheck, Double, GameRepository.GetGames(teamToCheck, againstTeam));
-			var singlePoints = GetPoints(teamToCheck, Single, GameRepository.GetGames(teamToCheck));
+			Task<float> bothPointsTask;
+			float singlePoints;
 
 			try
 			{
+				// Use divide and conquer for efficiency
+				bothPointsTask = GetPointsAsync(teamToCheck, Double, GameRepository.GetGames(teamToCheck, againstTeam));
+				singlePoints = GetPoints(teamToCheck, Single, GameRepository.GetGames(teamToCheck));
 				bothPointsTask.Wait();
 			}
 			catch (AggregateException exception)
