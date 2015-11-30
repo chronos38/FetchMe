@@ -6,7 +6,7 @@ namespace FetchMe.Logic
 {
 	public class ProbabilityStrategy : IProbabilityStrategy
 	{
-		public float? Compute(TeamDto team1, TeamDto team2)
+		public float? Compute(TeamDto lhs, TeamDto rhs)
 		{
 			throw new NotImplementedException();
 		}
