@@ -6,7 +6,7 @@ namespace FetchMe.Data.Interface
 {
 	public interface IGameRepository
 	{
-		int AddGame(GameDto game);
+		void AddGame(GameDto game);
 		IEnumerable<GameDto> GetGames(TeamDto fromTeam);
 		IEnumerable<GameDto> GetGames(TeamDto fromFirstTeam, TeamDto againstSecondTeam);
 	}

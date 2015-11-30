@@ -8,7 +8,7 @@ namespace FetchMe.Service
 {
 	public static class Mapper
 	{
-		public static void Configure()
+		static Mapper()
 		{
 			AutoMapper.Mapper.CreateMap<Game, GameDto>();
 			AutoMapper.Mapper.CreateMap<GameData, GameDataDto>();
@@ -16,6 +16,7 @@ namespace FetchMe.Service
 			AutoMapper.Mapper.CreateMap<TeamMember, TeamMemberDto>();
 			AutoMapper.Mapper.CreateMap<Replacement, ReplacementDto>();
 			AutoMapper.Mapper.CreateMap<Team, TeamDto>();
+			AutoMapper.Mapper.CreateMap<Goal, GoalDto>();
 		}
 
 		public static GameDto Map(Game game)

@@ -8,12 +8,6 @@ namespace FetchMe.Service.Tests
 	[TestClass]
 	public class MapperTest
 	{
-		[TestInitialize]
-		public void Startup()
-		{
-			Mapper.Configure();
-		}
-
 		[TestMethod]
 		public void AutomapperTest()
 		{

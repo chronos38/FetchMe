@@ -5,7 +5,7 @@ namespace FetchMe.Data.Interface
 {
 	public interface ITeamRepository
 	{
-		int AddTeam(TeamDto team);
+		void AddTeam(TeamDto team);
 		TeamDto GetTeam(int id);
 		TeamDto GetTeam(string name);
 		IEnumerable<TeamDto> GetTeams(string country);
