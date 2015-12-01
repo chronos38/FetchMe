@@ -35,6 +35,10 @@ namespace FetchMe.Logic
 				{
 					TeamRepository.AddTeam(game.Team2.Team);
 				}
+				if (GameExists(game))
+				{
+					return true;
+				}
 
 				GameRepository.AddGame(game);
 				return true;
@@ -43,6 +47,11 @@ namespace FetchMe.Logic
 			{
 				throw new LogicException("Could not validate game", exception);
 			}
+		}
+
+		private bool GameExists(GameDto game)
+		{
+			return GameRepository.GetGames(game.Team1.Team, game.Team2.Team).Contains(game);
 		}
 
 		private bool ValidateGame(GameDto game)

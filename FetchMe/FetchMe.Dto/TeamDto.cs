@@ -7,7 +7,7 @@ namespace FetchMe.Dto
 	{
 		protected bool Equals(TeamDto other)
 		{
-			return Id == other.Id;
+			return string.Equals(Name, other.Name) && string.Equals(Country, other.Country);
 		}
 
 		public override bool Equals(object obj)
@@ -19,7 +19,10 @@ namespace FetchMe.Dto
 
 		public override int GetHashCode()
 		{
-			return Id;
+			unchecked
+			{
+				return ((Name?.GetHashCode() ?? 0)*397) ^ (Country?.GetHashCode() ?? 0);
+			}
 		}
 
 		public int Id { get; set; }

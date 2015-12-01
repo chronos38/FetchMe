@@ -7,7 +7,7 @@ namespace FetchMe.Dto
 	{
 		protected bool Equals(TeamMemberDto other)
 		{
-			return Id == other.Id;
+			return Equals(Team, other.Team) && string.Equals(Name, other.Name);
 		}
 
 		public override bool Equals(object obj)
@@ -19,7 +19,10 @@ namespace FetchMe.Dto
 
 		public override int GetHashCode()
 		{
-			return Id;
+			unchecked
+			{
+				return ((Team?.GetHashCode() ?? 0)*397) ^ (Name?.GetHashCode() ?? 0);
+			}
 		}
 
 		public int Id { get; set; }
@@ -36,9 +39,6 @@ namespace FetchMe.Dto
 			return !ReferenceEquals(null, lhs) && lhs.Equals(rhs);
 		}
 
-		public static bool operator !=(TeamMemberDto lhs, TeamMemberDto rhs)
-		{
-			return !(lhs == rhs);
-		}
+		public static bool operator !=(TeamMemberDto lhs, TeamMemberDto rhs) => !(lhs == rhs);
 	}
 }

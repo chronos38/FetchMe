@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/chronos38/FetchMe/issues"
   },
-  "homepage": "https://github.com/chronos38/FetchMe#readme"
+  "homepage": "https://github.com/chronos38/FetchMe#readme",
+  "dependencies": {
+    "request": "^2.67.0"
+  }
 }
