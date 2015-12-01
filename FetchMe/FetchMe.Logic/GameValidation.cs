@@ -59,7 +59,7 @@ namespace FetchMe.Logic
 					.Contains(game);
 		}
 
-		private bool ValidateGame(GameDto game)
+		private static bool ValidateGame(GameDto game)
 		{
 			if (game.Minutes < 0)
 			{

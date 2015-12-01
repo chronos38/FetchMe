@@ -36,7 +36,7 @@ namespace FetchMe.Dto
 				return true;
 			}
 
-			return !ReferenceEquals(null, lhs) && lhs.Equals(rhs);
+			return !ReferenceEquals(null, lhs) && lhs.Equals((object) rhs);
 		}
 
 		public static bool operator !=(TeamMemberDto lhs, TeamMemberDto rhs) => !(lhs == rhs);
