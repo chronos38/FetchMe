@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using FetchMe.Data;
 using FetchMe.Data.Interface;
 using FetchMe.Dto;
@@ -22,19 +24,24 @@ namespace FetchMe.Logic
 			try
 			{
 				var team = TeamSynonyms.ResolveSynonym(teamName);
-				var result = TeamRepository.GetTeam(team);
-
-				if (result == null)
-				{
-					throw new NullReferenceException("Return value is null");
-				}
-
-				return Mapper.Map(result);
+				return Mapper.Map(TeamRepository.GetTeam(team));
 			}
 			catch (Exception exception)
 			{
 				throw new LogicException("Could not resolve team name", exception);
 			}
 		}
+
+		public IEnumerable<TeamDto> AvailableTeams()
+		{
+			try
+			{
+				return TeamRepository.GetAllTeams().ToArray().Select(Mapper.Map);
+			}
+			catch (Exception exception)
+			{
+				throw new LogicException("Could not resolve team name", exception);
+			}
+		} 
 	}
 }

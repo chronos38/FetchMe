@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Web.Http;
+using System.Web.Script.Serialization;
 using FetchMe.Logic.Interface;
 using FetchMe.Service.Models;
 using Microsoft.Practices.Unity;
+using Newtonsoft.Json;
 
 namespace FetchMe.Service.Controllers
 {
@@ -33,5 +35,21 @@ namespace FetchMe.Service.Controllers
 				return InternalServerError(exception);
 		    }
 	    }
+
+		// GET: api/crawler
+	    public IHttpActionResult Get()
+	    {
+		    try
+		    {
+			    var teamNameResolver = Application.Container.Resolve<ITeamNameResolver>();
+			    var teams = teamNameResolver.AvailableTeams();
+				var serializer = new JavaScriptSerializer();
+			    return Ok(serializer.Serialize(teams));
+		    }
+			catch (Exception exception)
+			{
+				return InternalServerError(exception);
+			}
+		}
     }
 }

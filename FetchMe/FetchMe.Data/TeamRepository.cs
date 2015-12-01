@@ -18,6 +18,7 @@ namespace FetchMe.Data
 		public void AddTeam(Team team)
 		{
 			Model.Teams.Add(team);
+			Model.SaveChanges();
 		}
 
 		public Team GetTeam(int id)

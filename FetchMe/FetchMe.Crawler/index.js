@@ -25,7 +25,7 @@ instance.run({
 		return winston.error(error);
 	}
 	
-	winston.info("Acquired all games, sending them now to CrawlerService: " + crawlerServiceUrl);
+	winston.info("Acquired " + games.length + " games, sending them now to CrawlerService: " + crawlerServiceUrl);
 	async.each(games, function (game, callback) {
 		request({
 			url: crawlerServiceUrl,

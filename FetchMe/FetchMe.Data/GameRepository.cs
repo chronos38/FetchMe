@@ -18,6 +18,7 @@ namespace FetchMe.Data
 		public void AddGame(Game game)
 		{
 			Model.Games.Add(game);
+			Model.SaveChanges();
 		}
 
 		public IEnumerable<Game> GetGames(Team fromTeam)
