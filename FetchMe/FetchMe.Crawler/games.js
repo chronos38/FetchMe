@@ -74,7 +74,6 @@ module.exports = function () {
 					// convert to required data for web service
 					games.push({
 						date: new Date(fixture.date),
-						minutes: 0,
 						score1: fixture.result.goalsHomeTeam,
 						score2: fixture.result.goalsAwayTeam,
 						team1: fixture.homeTeamName,

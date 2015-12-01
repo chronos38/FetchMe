@@ -5,7 +5,7 @@
 		"path": "api/crawler"
 	},
 	"footballDataOrg" : {
-		"season": "2010",
+		"season": "2000",
 		"league": "premier league",
 		"token": "9b5b4888f2494fcc8ade872240a29e6c"
 	}

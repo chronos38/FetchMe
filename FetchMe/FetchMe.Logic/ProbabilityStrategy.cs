@@ -26,8 +26,9 @@ namespace FetchMe.Logic
 
 		public ProbabilityStrategy(IGameRepository gameRepository)
 		{
+			// TODO: Add variable game count
 			GameRepository = gameRepository;
-			SetGameCount(10);
+			SetGameCount(2);
 		}
 
 		public ProbabilityStrategy SetGameCount(int value)
@@ -44,38 +45,21 @@ namespace FetchMe.Logic
 
 		public float Compute(string teamToCheck, string againstTeam)
 		{
-			Task<float> bothPointsTask;
+			float bothPoints;
 			float singlePoints;
 
 			try
 			{
 				// Use divide and conquer for efficiency
-				bothPointsTask = GetPointsAsync(teamToCheck, againstTeam, Double, GameRepository.GetGames);
+				bothPoints = GetPoints(teamToCheck, Double, GameRepository.GetGames(teamToCheck, againstTeam).ToArray().Select(Mapper.Map));
 				singlePoints = GetPoints(teamToCheck, Single, GameRepository.GetGames(teamToCheck).ToArray().Select(Mapper.Map));
-				bothPointsTask.Wait();
 			}
-			catch (AggregateException exception)
+			catch (Exception exception)
 			{
-				throw new LogicException("Task threw an exception", exception);
+				throw new LogicException("Could not compute probability", exception);
 			}
-
-			var bothPoints = bothPointsTask.Result;
+			
 			return (singlePoints + bothPoints)/MaxPoints;
-		}
-
-		private Task<float> GetPointsAsync(string teamToCheck, string againstTeam, Points points, Func<string, string, IEnumerable<Game>> getGames)
-		{
-			// Return a task which calculates the probability of a LINQ to SQL query for performance optimization
-			return
-				Task.Run(
-					() =>
-						GetPoints(teamToCheck, points,
-							getGames(teamToCheck, againstTeam).ToArray().Select(Mapper.Map)));
-		}
-
-		private Task<float> GetPointsAsync(string teamToCheck, Points pointsToAdd, IEnumerable<GameDto> gameDtos)
-		{
-			return Task.Run(() => GetPoints(teamToCheck, pointsToAdd, gameDtos));
 		}
 
 		private float GetPoints(string teamToCheck, Points pointsToAdd, IEnumerable<GameDto> gameDtos)
@@ -92,10 +76,10 @@ namespace FetchMe.Logic
 
 			foreach (var game in games)
 			{
-				var scoreToCheck = game.Team1 == teamToCheck
+				var scoreToCheck = string.Equals(game.Team1, teamToCheck, StringComparison.CurrentCultureIgnoreCase)
 					? game.Score1
 					: game.Score2;
-				var scoreToCheckAgainst = game.Team2 == teamToCheck
+				var scoreToCheckAgainst = string.Equals(game.Team2, teamToCheck, StringComparison.CurrentCultureIgnoreCase)
 					? game.Score1
 					: game.Score2;
 

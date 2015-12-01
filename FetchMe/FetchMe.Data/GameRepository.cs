@@ -17,8 +17,15 @@ namespace FetchMe.Data
 
 		public void AddGame(Game game)
 		{
-			Model.Games.Add(game);
-			Model.SaveChanges();
+			var existsAlready = Model.Games.Any(
+				g => g.Date == game.Date && g.Score1 == game.Score1 && g.Score2 == game.Score2 && g.Team1 == game.Team1 &&
+				     g.Team2 == game.Team2);
+
+			if (!existsAlready)
+			{
+				Model.Games.Add(game);
+				Model.SaveChanges();
+			}
 		}
 
 		public IEnumerable<Game> GetGames(string fromTeam)
