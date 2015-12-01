@@ -9,5 +9,6 @@ namespace FetchMe.Data.Interface
 		TeamDto GetTeam(int id);
 		TeamDto GetTeam(string name);
 		IEnumerable<TeamDto> GetTeams(string country);
+		IEnumerable<TeamDto> GetAllTeams();
 	}
 }

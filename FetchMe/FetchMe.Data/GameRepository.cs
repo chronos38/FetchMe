@@ -8,9 +8,9 @@ namespace FetchMe.Data
 {
 	public class GameRepository : IGameRepository
 	{
-		private FetchMeModel Model { get; }
+		private FetchMeContext Model { get; }
 
-		public GameRepository(FetchMeModel model)
+		public GameRepository(FetchMeContext model)
 		{
 			Model = model;
 		}

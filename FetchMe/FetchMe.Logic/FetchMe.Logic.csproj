@@ -44,9 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DummyTeamSynonyms.cs" />
+    <Compile Include="GameValidation.cs" />
     <Compile Include="Interface\IGameValidation.cs" />
     <Compile Include="Interface\IProbabilityStrategy.cs" />
     <Compile Include="Interface\ITeamNameResolver.cs" />
+    <Compile Include="Interface\ITeamSynonyms.cs" />
     <Compile Include="LogicException.cs" />
     <Compile Include="ProbabilityStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

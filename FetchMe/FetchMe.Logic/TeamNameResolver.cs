@@ -7,10 +7,12 @@ namespace FetchMe.Logic
 {
 	public class TeamNameResolver : ITeamNameResolver
 	{
+		private ITeamSynonyms TeamSynonyms { get; }
 		private ITeamRepository TeamRepository { get; }
 
-		public TeamNameResolver(ITeamRepository repository)
+		public TeamNameResolver(ITeamSynonyms teamSynonyms, ITeamRepository repository)
 		{
+			TeamSynonyms = teamSynonyms;
 			TeamRepository = repository;
 		}
 
@@ -18,7 +20,15 @@ namespace FetchMe.Logic
 		{
 			try
 			{
-				return TeamRepository.GetTeam(teamName);
+				var team = TeamSynonyms.ResolveSynonym(teamName);
+				var result = TeamRepository.GetTeam(team);
+
+				if (result == null)
+				{
+					throw new NullReferenceException("Return value is null");
+				}
+
+				return result;
 			}
 			catch (Exception exception)
 			{

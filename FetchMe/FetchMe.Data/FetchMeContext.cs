@@ -4,7 +4,7 @@ namespace FetchMe.Data
 	using System.Data.Entity;
 	using System.Linq;
 
-	public class FetchMeModel : DbContext
+	public class FetchMeContext : DbContext
 	{
 		// Your context has been configured to use a 'FetchMeModel' connection string from your application's 
 		// configuration file (App.config or Web.config). By default, this connection string targets the 
@@ -12,8 +12,8 @@ namespace FetchMe.Data
 		// 
 		// If you wish to target a different database and/or database provider, modify the 'FetchMeModel' 
 		// connection string in the application configuration file.
-		public FetchMeModel()
-			: base("name=FetchMeModel")
+		public FetchMeContext()
+			: base("name=FetchMeContext")
 		{
 		}
 

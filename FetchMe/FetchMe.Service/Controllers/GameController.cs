@@ -7,7 +7,8 @@ namespace FetchMe.Service.Controllers
 {
     public class GameController : ApiController
     {
-	    public IHttpActionResult ComputeProbability(string fromFirstTeam, string againstSecondTeam)
+		// GET: api/game?fromFirstTeam=...&againstSecondTeam=...
+	    public IHttpActionResult Get(string fromFirstTeam, string againstSecondTeam)
 	    {
 		    if (string.IsNullOrEmpty(fromFirstTeam) || string.IsNullOrEmpty(againstSecondTeam))
 		    {

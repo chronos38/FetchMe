@@ -8,9 +8,9 @@ namespace FetchMe.Data
 {
 	public class TeamRepository : ITeamRepository
 	{
-		private FetchMeModel Model { get; }
+		private FetchMeContext Model { get; }
 
-		public TeamRepository(FetchMeModel model)
+		public TeamRepository(FetchMeContext model)
 		{
 			Model = model;
 		}
@@ -38,6 +38,11 @@ namespace FetchMe.Data
 			return from t in Model.Teams
 				where string.Equals(t.Country, country, StringComparison.CurrentCultureIgnoreCase)
 				select Mapper.Map(t);
+		}
+
+		public IEnumerable<TeamDto> GetAllTeams()
+		{
+			return from t in Model.Teams select Mapper.Map(t);
 		}
 	}
 }

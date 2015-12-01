@@ -8,7 +8,8 @@ namespace FetchMe.Service.Controllers
 {
     public class CrawlerController : ApiController
     {
-	    public IHttpActionResult AddGame([FromBody]Game game)
+		// POST: api/crawler
+	    public IHttpActionResult Post([FromBody]Game game)
 	    {
 		    if (game == null)
 		    {
