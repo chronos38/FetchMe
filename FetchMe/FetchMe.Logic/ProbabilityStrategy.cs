@@ -42,7 +42,7 @@ namespace FetchMe.Logic
 			return this;
 		}
 
-		public float Compute(TeamDto teamToCheck, TeamDto againstTeam)
+		public float Compute(string teamToCheck, string againstTeam)
 		{
 			Task<float> bothPointsTask;
 			float singlePoints;
@@ -51,7 +51,7 @@ namespace FetchMe.Logic
 			{
 				// Use divide and conquer for efficiency
 				bothPointsTask = GetPointsAsync(teamToCheck, againstTeam, Double, GameRepository.GetGames);
-				singlePoints = GetPoints(teamToCheck, Single, GameRepository.GetGames(Mapper.Map(teamToCheck)).ToArray().Select(Mapper.Map));
+				singlePoints = GetPoints(teamToCheck, Single, GameRepository.GetGames(teamToCheck).ToArray().Select(Mapper.Map));
 				bothPointsTask.Wait();
 			}
 			catch (AggregateException exception)
@@ -63,22 +63,22 @@ namespace FetchMe.Logic
 			return (singlePoints + bothPoints)/MaxPoints;
 		}
 
-		private Task<float> GetPointsAsync(TeamDto teamToCheck, TeamDto againstTeam, Points points, Func<Team, Team, IEnumerable<Game>> getGames)
+		private Task<float> GetPointsAsync(string teamToCheck, string againstTeam, Points points, Func<string, string, IEnumerable<Game>> getGames)
 		{
 			// Return a task which calculates the probability of a LINQ to SQL query for performance optimization
 			return
 				Task.Run(
 					() =>
 						GetPoints(teamToCheck, points,
-							getGames(Mapper.Map(teamToCheck), Mapper.Map(againstTeam)).ToArray().Select(Mapper.Map)));
+							getGames(teamToCheck, againstTeam).ToArray().Select(Mapper.Map)));
 		}
 
-		private Task<float> GetPointsAsync(TeamDto teamToCheck, Points pointsToAdd, IEnumerable<GameDto> gameDtos)
+		private Task<float> GetPointsAsync(string teamToCheck, Points pointsToAdd, IEnumerable<GameDto> gameDtos)
 		{
 			return Task.Run(() => GetPoints(teamToCheck, pointsToAdd, gameDtos));
 		}
 
-		private float GetPoints(TeamDto teamToCheck, Points pointsToAdd, IEnumerable<GameDto> gameDtos)
+		private float GetPoints(string teamToCheck, Points pointsToAdd, IEnumerable<GameDto> gameDtos)
 		{
 			var result = .0f;
 			var streak = 0;
@@ -92,12 +92,12 @@ namespace FetchMe.Logic
 
 			foreach (var game in games)
 			{
-				var scoreToCheck = game.Team1.Team.Name == teamToCheck.Name
-					? game.Score.Score1
-					: game.Score.Score2;
-				var scoreToCheckAgainst = game.Team2.Team.Name == teamToCheck.Name
-					? game.Score.Score1
-					: game.Score.Score2;
+				var scoreToCheck = game.Team1.Team == teamToCheck
+					? game.Score1
+					: game.Score2;
+				var scoreToCheckAgainst = game.Team2.Team == teamToCheck
+					? game.Score1
+					: game.Score2;
 
 				// Team won a single game
 				if (scoreToCheck > scoreToCheckAgainst)

@@ -26,7 +26,7 @@ namespace FetchMe.Dto
 		}
 
 		public int Id { get; set; }
-		public TeamMemberDto Goalscrorer { get; set; }
+		public string Goalscrorer { get; set; }
 		public int Minute { get; set; }
 
 		public static bool operator ==(GoalDto lhs, GoalDto rhs)

@@ -21,19 +21,19 @@ namespace FetchMe.Data
 			Model.SaveChanges();
 		}
 
-		public IEnumerable<Game> GetGames(Team fromTeam)
+		public IEnumerable<Game> GetGames(string fromTeam)
 		{
 			return from g in Model.Games
-				where g.Team1.Team.Name == fromTeam.Name || g.Team2.Team.Name == fromTeam.Name
+				where g.Team1.Team == fromTeam || g.Team2.Team == fromTeam
 				select g;
 		}
 
-		public IEnumerable<Game> GetGames(Team fromFirstTeam, Team againstSecondTeam)
+		public IEnumerable<Game> GetGames(string fromFirstTeam, string againstSecondTeam)
 		{
 			return from g in Model.Games
 				where
-					(g.Team1.Team.Name == fromFirstTeam.Name || g.Team1.Team.Name == againstSecondTeam.Name) &&
-					(g.Team2.Team.Name == fromFirstTeam.Name || g.Team2.Team.Name == againstSecondTeam.Name)
+					(g.Team1.Team == fromFirstTeam || g.Team1.Team == againstSecondTeam) &&
+					(g.Team2.Team == fromFirstTeam || g.Team2.Team == againstSecondTeam)
 				select g;
 		}
 	}

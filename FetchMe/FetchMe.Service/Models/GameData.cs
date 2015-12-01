@@ -7,11 +7,11 @@ namespace FetchMe.Service.Models
 		/// <summary>
 		/// Required
 		/// </summary>
-		public Team Team { get; set; }
+		public string Team { get; set; }
 		/// <summary>
 		/// Optional
 		/// </summary>
-		public IEnumerable<TeamMember> Lineup { get; set; }
+		public IEnumerable<string> Lineup { get; set; }
 		/// <summary>
 		/// Optional
 		/// </summary>
@@ -19,11 +19,11 @@ namespace FetchMe.Service.Models
 		/// <summary>
 		/// Optional
 		/// </summary>
-		public IEnumerable<TeamMember> YellowCards { get; set; }
+		public IEnumerable<string> YellowCards { get; set; }
 		/// <summary>
 		/// Optional
 		/// </summary>
-		public IEnumerable<TeamMember> RedCards { get; set; }
+		public IEnumerable<string> RedCards { get; set; }
 		/// <summary>
 		/// Optional
 		/// </summary>

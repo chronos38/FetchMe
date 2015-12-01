@@ -35,11 +35,11 @@ namespace FetchMe.Dto
 		}
 
 		public int Id { get; set; }
-		public TeamDto Team { get; set; }
-		public IEnumerable<TeamMemberDto> Lineup { get; set; }
+		public string Team { get; set; }
+		public IEnumerable<string> Lineup { get; set; }
 		public IEnumerable<ReplacementDto> Replacements { get; set; }
-		public IEnumerable<TeamMemberDto> YellowCards { get; set; }
-		public IEnumerable<TeamMemberDto> RedCards { get; set; }
+		public IEnumerable<string> YellowCards { get; set; }
+		public IEnumerable<string> RedCards { get; set; }
 		public string Trainer { get; set; }
 
 		public static bool operator ==(GameDataDto lhs, GameDataDto rhs)

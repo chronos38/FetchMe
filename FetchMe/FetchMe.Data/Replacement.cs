@@ -6,8 +6,8 @@ namespace FetchMe.Data
 	{
 		[Key]
 		public int Id { get; set; }
-		public virtual TeamMember In { get; set; }
-		public virtual TeamMember Out { get; set; }
+		public virtual string In { get; set; }
+		public virtual string Out { get; set; }
 		public int Minute { get; set; }
 	}
 }

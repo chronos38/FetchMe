@@ -2,8 +2,8 @@
 {
 	public class Replacement
 	{
-		public TeamMember In { get; set; }
-		public TeamMember Out { get; set; }
+		public string In { get; set; }
+		public string Out { get; set; }
 		public int Minute { get; set; }
 	}
 }

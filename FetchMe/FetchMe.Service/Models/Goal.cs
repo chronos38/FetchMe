@@ -2,7 +2,7 @@
 {
 	public class Goal
 	{
-		public TeamMember Goalscrorer { get; set; }
+		public string Goalscrorer { get; set; }
 		public int Minute { get; set; }
 	}
 }

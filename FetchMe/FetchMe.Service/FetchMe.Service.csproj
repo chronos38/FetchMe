@@ -127,9 +127,6 @@
     <Compile Include="Models\GameData.cs" />
     <Compile Include="Models\Goal.cs" />
     <Compile Include="Models\Replacement.cs" />
-    <Compile Include="Models\Score.cs" />
-    <Compile Include="Models\Team.cs" />
-    <Compile Include="Models\TeamMember.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

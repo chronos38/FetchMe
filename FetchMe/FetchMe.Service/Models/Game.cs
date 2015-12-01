@@ -16,11 +16,11 @@ namespace FetchMe.Service.Models
 		/// <summary>
 		/// Required
 		/// </summary>
-		public Score Score { get; set; }
+		public int Score1 { get; set; }
 		/// <summary>
-		/// Optional
+		/// Required
 		/// </summary>
-		public IEnumerable<Goal> Goals { get; set; }
+		public int Score2 { get; set; }
 		/// <summary>
 		/// Required
 		/// </summary>
@@ -29,5 +29,9 @@ namespace FetchMe.Service.Models
 		/// Required
 		/// </summary>
 		public GameData Team2 { get; set; }
+		/// <summary>
+		/// Optional
+		/// </summary>
+		public IEnumerable<Goal> Goals { get; set; }
 	}
 }

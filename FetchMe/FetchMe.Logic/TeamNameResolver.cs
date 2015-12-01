@@ -11,37 +11,22 @@ namespace FetchMe.Logic
 	public class TeamNameResolver : ITeamNameResolver
 	{
 		private ITeamSynonyms TeamSynonyms { get; }
-		private ITeamRepository TeamRepository { get; }
 
-		public TeamNameResolver(ITeamSynonyms teamSynonyms, ITeamRepository repository)
+		public TeamNameResolver(ITeamSynonyms teamSynonyms)
 		{
 			TeamSynonyms = teamSynonyms;
-			TeamRepository = repository;
 		}
 
-		public TeamDto ResolveTeamName(string teamName)
+		public string ResolveTeamName(string teamName)
 		{
 			try
 			{
-				var team = TeamSynonyms.ResolveSynonym(teamName);
-				return Mapper.Map(TeamRepository.GetTeam(team));
+				return TeamSynonyms.ResolveSynonym(teamName);
 			}
 			catch (Exception exception)
 			{
 				throw new LogicException("Could not resolve team name", exception);
 			}
 		}
-
-		public IEnumerable<TeamDto> AvailableTeams()
-		{
-			try
-			{
-				return TeamRepository.GetAllTeams().ToArray().Select(Mapper.Map);
-			}
-			catch (Exception exception)
-			{
-				throw new LogicException("Could not resolve team name", exception);
-			}
-		} 
 	}
 }

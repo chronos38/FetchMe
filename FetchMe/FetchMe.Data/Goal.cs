@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace FetchMe.Data
 {
@@ -6,7 +7,7 @@ namespace FetchMe.Data
 	{
 		[Key]
 		public int Id { get; set; }
-		public virtual TeamMember Goalscrorer { get; set; }
+		public string Goalscrorer { get; set; }
 		public int Minute { get; set; }
 	}
 }

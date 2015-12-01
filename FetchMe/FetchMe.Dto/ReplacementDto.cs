@@ -29,8 +29,8 @@ namespace FetchMe.Dto
 		}
 
 		public int Id { get; set; }
-		public TeamMemberDto In { get; set; }
-		public TeamMemberDto Out { get; set; }
+		public string In { get; set; }
+		public string Out { get; set; }
 		public int Minute { get; set; }
 
 		public static bool operator ==(ReplacementDto lhs, ReplacementDto rhs)

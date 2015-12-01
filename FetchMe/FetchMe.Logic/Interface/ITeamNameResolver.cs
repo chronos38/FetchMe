@@ -5,7 +5,6 @@ namespace FetchMe.Logic.Interface
 {
 	public interface ITeamNameResolver
 	{
-		TeamDto ResolveTeamName(string teamName);
-		IEnumerable<TeamDto> AvailableTeams();
+		string ResolveTeamName(string teamName);
 	}
 }

@@ -11,6 +11,6 @@ namespace FetchMe.Logic.Interface
 		/// <param name="team1">First team to compute.</param>
 		/// <param name="team2">Second team to compute.</param>
 		/// <returns>Value ranging between 0 and 1 where 0 is 0 percent and 1 is a 100 percent.</returns>
-		float Compute(TeamDto team1, TeamDto team2);
+		float Compute(string team1, string team2);
 	}
 }

@@ -75,19 +75,13 @@ module.exports = function () {
 					games.push({
 						date: new Date(fixture.date),
 						minutes: 0,
-						score: {
-							score1: fixture.result.goalsHomeTeam,
-							score2: fixture.result.goalsAwayTeam
-						},
+						score1: fixture.result.goalsHomeTeam,
+						score2: fixture.result.goalsAwayTeam,
 						team1: {
-							team: {
-								name: fixture.homeTeamName
-							}
+							team: fixture.homeTeamName
 						},
 						team2: {
-							team: {
-								name: fixture.awayTeamName
-							}
+							team: fixture.awayTeamName
 						}
 					});
 				});

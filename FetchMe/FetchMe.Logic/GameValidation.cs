@@ -11,13 +11,11 @@ namespace FetchMe.Logic
 	{
 		private ITeamSynonyms TeamSynonyms { get; }
 		private IGameRepository GameRepository { get; }
-		private ITeamRepository TeamRepository { get; }
 
-		public GameValidation(ITeamSynonyms teamSynonyms, IGameRepository gameRepository, ITeamRepository teamRepository)
+		public GameValidation(ITeamSynonyms teamSynonyms, IGameRepository gameRepository)
 		{
 			TeamSynonyms = teamSynonyms;
 			GameRepository = gameRepository;
-			TeamRepository = teamRepository;
 		}
 
 		public bool ValidateAndAdd(GameDto game)
@@ -27,14 +25,6 @@ namespace FetchMe.Logic
 				if (!ValidateGame(game))
 				{
 					return false;
-				}
-				if (!TeamExists(game.Team1.Team))
-				{
-					TeamRepository.AddTeam(Mapper.Map(game.Team1.Team));
-				}
-				if (!TeamExists(game.Team2.Team))
-				{
-					TeamRepository.AddTeam(Mapper.Map(game.Team2.Team));
 				}
 				if (GameExists(game))
 				{
@@ -53,7 +43,7 @@ namespace FetchMe.Logic
 		private bool GameExists(GameDto game)
 		{
 			return
-				GameRepository.GetGames(Mapper.Map(game.Team1.Team), Mapper.Map(game.Team2.Team))
+				GameRepository.GetGames(game.Team1.Team, game.Team2.Team)
 					.ToArray()
 					.Select(Mapper.Map)
 					.Contains(game);
@@ -65,15 +55,11 @@ namespace FetchMe.Logic
 			{
 				return false;
 			}
-			if (game.Score == null)
+			if (game.Score1 < 0)
 			{
 				return false;
 			}
-			if (game.Score.Score1 < 0)
-			{
-				return false;
-			}
-			if (game.Score.Score2 < 0)
+			if (game.Score2 < 0)
 			{
 				return false;
 			}
@@ -81,21 +67,12 @@ namespace FetchMe.Logic
 			{
 				return false;
 			}
-			if (game.Team1.Team == null || game.Team2.Team == null)
-			{
-				return false;
-			}
-			if (string.IsNullOrWhiteSpace(game.Team1.Team.Name) || string.IsNullOrWhiteSpace(game.Team2.Team.Name))
+			if (string.IsNullOrWhiteSpace(game.Team1.Team) || string.IsNullOrWhiteSpace(game.Team2.Team))
 			{
 				return false;
 			}
 
 			return true;
-		}
-
-		private bool TeamExists(TeamDto team)
-		{
-			return TeamRepository.GetAllTeams().Select(t => t.Name).Contains(TeamSynonyms.ResolveSynonym(team.Name));
 		}
 	}
 }

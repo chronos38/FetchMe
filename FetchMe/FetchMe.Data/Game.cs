@@ -11,9 +11,10 @@ namespace FetchMe.Data
 		public int Id { get; set; }
 		public DateTime Date { get; set; }
 		public int Minutes { get; set; }
-		public virtual Score Score { get; set; }
-		public virtual IEnumerable<Goal> Goals { get; set; }
+		public int Score1 { get; set; }
+		public int Score2 { get; set; }
 		public virtual GameData Team1 { get; set; }
 		public virtual GameData Team2 { get; set; }
+		public virtual IEnumerable<Goal> Goals { get; set; }
 	}
 }

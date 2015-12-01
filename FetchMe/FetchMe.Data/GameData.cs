@@ -7,11 +7,11 @@ namespace FetchMe.Data
 	{
 		[Key]
 		public int Id { get; set; }
-		public virtual Team Team { get; set; }
-		public virtual IEnumerable<TeamMember> Lineup { get; set; }
+		public virtual string Team { get; set; }
+		public virtual IEnumerable<string> Lineup { get; set; }
 		public virtual IEnumerable<Replacement> Replacements { get; set; }
-		public virtual IEnumerable<TeamMember> YellowCards { get; set; }
-		public virtual IEnumerable<TeamMember> RedCards { get; set; }
+		public virtual IEnumerable<string> YellowCards { get; set; }
+		public virtual IEnumerable<string> RedCards { get; set; }
 		public string Trainer { get; set; }
 	}
 }

@@ -9,8 +9,8 @@ namespace FetchMe.Dto
 	{
 		protected bool Equals(GameDto other)
 		{
-			return Date.Equals(other.Date) && Minutes == other.Minutes && Equals(Score, other.Score) &&
-			       Equals(Goals, other.Goals) && Equals(Team1, other.Team1) && Equals(Team2, other.Team2);
+			return Date.Equals(other.Date) && Minutes == other.Minutes && Score1 == other.Score1 && Score2 == other.Score2 &&
+			       Equals(Team1, other.Team1) && Equals(Team2, other.Team2) && Equals(Goals, other.Goals);
 		}
 
 		public override bool Equals(object obj)
@@ -26,10 +26,11 @@ namespace FetchMe.Dto
 			{
 				var hashCode = Date.GetHashCode();
 				hashCode = (hashCode*397) ^ Minutes;
-				hashCode = (hashCode*397) ^ (Score?.GetHashCode() ?? 0);
-				hashCode = (hashCode*397) ^ (Goals?.GetHashCode() ?? 0);
+				hashCode = (hashCode*397) ^ Score1;
+				hashCode = (hashCode*397) ^ Score2;
 				hashCode = (hashCode*397) ^ (Team1?.GetHashCode() ?? 0);
 				hashCode = (hashCode*397) ^ (Team2?.GetHashCode() ?? 0);
+				hashCode = (hashCode*397) ^ (Goals?.GetHashCode() ?? 0);
 				return hashCode;
 			}
 		}
@@ -37,10 +38,11 @@ namespace FetchMe.Dto
 		public int Id { get; set; }
 		public DateTime Date { get; set; }
 		public int Minutes { get; set; }
-		public ScoreDto Score { get; set; }
-		public IEnumerable<GoalDto> Goals { get; set; }
+		public int Score1 { get; set; }
+		public int Score2 { get; set; }
 		public GameDataDto Team1 { get; set; }
 		public GameDataDto Team2 { get; set; }
+		public IEnumerable<GoalDto> Goals { get; set; }
 
 		public static bool operator ==(GameDto lhs, GameDto rhs)
 		{

@@ -35,21 +35,5 @@ namespace FetchMe.Service.Controllers
 				return InternalServerError(exception);
 		    }
 	    }
-
-		// GET: api/crawler
-	    public IHttpActionResult Get()
-	    {
-		    try
-		    {
-			    var teamNameResolver = Application.Container.Resolve<ITeamNameResolver>();
-			    var teams = teamNameResolver.AvailableTeams();
-				var serializer = new JavaScriptSerializer();
-			    return Ok(serializer.Serialize(teams));
-		    }
-			catch (Exception exception)
-			{
-				return InternalServerError(exception);
-			}
-		}
     }
 }
