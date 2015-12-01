@@ -1,0 +1,19 @@
+{
+  "name": "fetch_me",
+  "version": "1.0.0",
+  "description": "Should be able to fetch, interpret and execute on given sports data",
+  "main": "index.js",
+  "scripts": {
+    "test": "tests.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chronos38/FetchMe.git"
+  },
+  "author": "David Wolf",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/chronos38/FetchMe/issues"
+  },
+  "homepage": "https://github.com/chronos38/FetchMe#readme"
+}
