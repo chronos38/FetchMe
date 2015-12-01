@@ -1,0 +1,12 @@
+{
+	"crawlerService": {
+		"host": "localhost",
+		"port": "50170",
+		"path": "api/crawler"
+	},
+	"footballDataOrg" : {
+		"season": "2014",
+		"league": "premier league",
+		"token": "9b5b4888f2494fcc8ade872240a29e6c"
+	}
+}
