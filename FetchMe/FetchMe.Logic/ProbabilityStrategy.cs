@@ -92,10 +92,10 @@ namespace FetchMe.Logic
 
 			foreach (var game in games)
 			{
-				var scoreToCheck = game.Team1.Team == teamToCheck
+				var scoreToCheck = game.Team1 == teamToCheck
 					? game.Score1
 					: game.Score2;
-				var scoreToCheckAgainst = game.Team2.Team == teamToCheck
+				var scoreToCheckAgainst = game.Team2 == teamToCheck
 					? game.Score1
 					: game.Score2;
 

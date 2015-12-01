@@ -11,21 +11,11 @@ namespace FetchMe.Service
 		static Mapper()
 		{
 			AutoMapper.Mapper.CreateMap<Game, GameDto>();
-			AutoMapper.Mapper.CreateMap<GameData, GameDataDto>();
-			AutoMapper.Mapper.CreateMap<Replacement, ReplacementDto>();
-			AutoMapper.Mapper.CreateMap<Goal, GoalDto>();
 		}
 
 		public static GameDto Map(Game game)
 		{
-			try
-			{
-				return AutoMapper.Mapper.Map<GameDto>(game);
-			}
-			catch (Exception exception)
-			{
-				throw new ServiceException("AutoMapper failed to map type Game to type GameDto", exception);
-			}
+			return AutoMapper.Mapper.Map<GameDto>(game);
 		}
 	}
 }

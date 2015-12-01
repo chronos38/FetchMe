@@ -122,11 +122,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Mapper.cs" />
-    <Compile Include="ServiceException.cs" />
     <Compile Include="Models\Game.cs" />
-    <Compile Include="Models\GameData.cs" />
-    <Compile Include="Models\Goal.cs" />
-    <Compile Include="Models\Replacement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

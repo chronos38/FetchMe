@@ -55,7 +55,7 @@ namespace FetchMe.Service.Tests
 
 		public float? ShouldReturn50ForEqualTeams()
 		{
-			return ProbabilityStrategy.Compute("Foo", "Baz");
+			return ProbabilityStrategy.Compute("Foo", "Bar");
 		}
 	}
 
@@ -70,29 +70,29 @@ namespace FetchMe.Service.Tests
 			GameRepository = new GameRepositoryInMemory();
 			GameRepository.AddGame(new Game
 			{
-				Team1 = new GameData { Id = 1, Team = "Foo" },
-				Team2 = new GameData { Id = 2, Team = "Baz" },
+				Team1 = "Foo",
+				Team2 = "Bar",
 				Score1 = 0,
 				Score2 = 1
 			});
 			GameRepository.AddGame(new Game
 			{
-				Team1 = new GameData { Id = 3, Team = "Foo" },
-				Team2 = new GameData { Id = 4, Team = "Baz" },
+				Team1 = "Foo",
+				Team2 = "Bar",
 				Score1 = 1,
 				Score2 = 0
 			});
 			GameRepository.AddGame(new Game
 			{
-				Team1 = new GameData { Id = 5, Team = "Foo" },
-				Team2 = new GameData { Id = 6, Team = "Baz" },
+				Team1 = "Foo",
+				Team2 = "Bar",
 				Score1 = 0,
 				Score2 = 1
 			});
 			GameRepository.AddGame(new Game
 			{
-				Team1 = new GameData { Id = 7, Team = "Foo" },
-				Team2 = new GameData { Id = 8, Team = "Baz" },
+				Team1 = "Foo",
+				Team2 = "Bar",
 				Score1 = 1,
 				Score2 = 0
 			});

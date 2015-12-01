@@ -10,10 +10,6 @@ namespace FetchMe.Service.Models
 		/// </summary>
 		public DateTime Date { get; set; }
 		/// <summary>
-		/// At least zero
-		/// </summary>
-		public int Minutes { get; set; }
-		/// <summary>
 		/// Required
 		/// </summary>
 		public int Score1 { get; set; }
@@ -24,14 +20,10 @@ namespace FetchMe.Service.Models
 		/// <summary>
 		/// Required
 		/// </summary>
-		public GameData Team1 { get; set; }
+		public string Team1 { get; set; }
 		/// <summary>
 		/// Required
 		/// </summary>
-		public GameData Team2 { get; set; }
-		/// <summary>
-		/// Optional
-		/// </summary>
-		public IEnumerable<Goal> Goals { get; set; }
+		public string Team2 { get; set; }
 	}
 }

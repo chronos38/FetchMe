@@ -22,9 +22,6 @@ namespace FetchMe.Data
 
 		// public virtual DbSet<MyEntity> MyEntities { get; set; }
 		public virtual DbSet<Game> Games { get; set; }
-		public virtual DbSet<GameData> GameData { get; set; }
-		public virtual DbSet<Goal> Goals { get; set; }
-		public virtual DbSet<Replacement> Replacements { get; set; }
 	}
 
 	//public class MyEntity

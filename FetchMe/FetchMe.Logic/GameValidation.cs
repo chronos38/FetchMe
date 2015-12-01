@@ -43,7 +43,7 @@ namespace FetchMe.Logic
 		private bool GameExists(GameDto game)
 		{
 			return
-				GameRepository.GetGames(game.Team1.Team, game.Team2.Team)
+				GameRepository.GetGames(game.Team1, game.Team2)
 					.ToArray()
 					.Select(Mapper.Map)
 					.Contains(game);
@@ -51,10 +51,6 @@ namespace FetchMe.Logic
 
 		private static bool ValidateGame(GameDto game)
 		{
-			if (game.Minutes < 0)
-			{
-				return false;
-			}
 			if (game.Score1 < 0)
 			{
 				return false;
@@ -67,7 +63,7 @@ namespace FetchMe.Logic
 			{
 				return false;
 			}
-			if (string.IsNullOrWhiteSpace(game.Team1.Team) || string.IsNullOrWhiteSpace(game.Team2.Team))
+			if (string.IsNullOrWhiteSpace(game.Team1) || string.IsNullOrWhiteSpace(game.Team2))
 			{
 				return false;
 			}

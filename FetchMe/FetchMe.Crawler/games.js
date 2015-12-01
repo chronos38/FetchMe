@@ -77,12 +77,8 @@ module.exports = function () {
 						minutes: 0,
 						score1: fixture.result.goalsHomeTeam,
 						score2: fixture.result.goalsAwayTeam,
-						team1: {
-							team: fixture.homeTeamName
-						},
-						team2: {
-							team: fixture.awayTeamName
-						}
+						team1: fixture.homeTeamName,
+						team2: fixture.awayTeamName
 					});
 				});
 				next(null, games);

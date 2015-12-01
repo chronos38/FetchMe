@@ -15,19 +15,10 @@ namespace FetchMe.Service.Tests
 			var game = new Game
 			{
 				Date = DateTime.UtcNow,
-				Minutes = 90,
 				Score1 = 1,
 				Score2 = 2,
-				Team1 = new GameData
-				{
-					Team = "Foo",
-					Lineup = new List<string> { "Foo" }
-				},
-				Team2 = new GameData
-				{
-					Team = "Bar",
-					Lineup = new List<string> { "Foo" } 
-				}
+				Team1 = "Foo",
+				Team2 = "Bar"
 			};
 
 			// When
@@ -35,7 +26,6 @@ namespace FetchMe.Service.Tests
 
 			// Then
 			Assert.AreEqual(game.Date, dto.Date);
-			Assert.AreEqual(game.Minutes, dto.Minutes);
 			Assert.AreEqual(game.Score1, dto.Score1);
 			Assert.AreEqual(game.Score2, dto.Score2);
 		}

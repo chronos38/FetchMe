@@ -26,10 +26,6 @@ namespace FetchMe.Service.Controllers
 				    ? Ok() as IHttpActionResult
 				    : BadRequest();
 		    }
-		    catch (ServiceException exception)
-		    {
-			    return BadRequest(exception.Message);
-		    }
 		    catch (Exception exception)
 		    {
 				return InternalServerError(exception);

@@ -24,7 +24,7 @@ namespace FetchMe.Data
 		public IEnumerable<Game> GetGames(string fromTeam)
 		{
 			return from g in Model.Games
-				where g.Team1.Team == fromTeam || g.Team2.Team == fromTeam
+				where g.Team1 == fromTeam || g.Team2 == fromTeam
 				select g;
 		}
 
@@ -32,8 +32,8 @@ namespace FetchMe.Data
 		{
 			return from g in Model.Games
 				where
-					(g.Team1.Team == fromFirstTeam || g.Team1.Team == againstSecondTeam) &&
-					(g.Team2.Team == fromFirstTeam || g.Team2.Team == againstSecondTeam)
+					(g.Team1 == fromFirstTeam || g.Team1 == againstSecondTeam) &&
+					(g.Team2 == fromFirstTeam || g.Team2 == againstSecondTeam)
 				select g;
 		}
 	}
