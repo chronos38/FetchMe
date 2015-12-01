@@ -1,4 +1,5 @@
 ﻿using System;
+using FetchMe.Data;
 using FetchMe.Data.Interface;
 using FetchMe.Dto;
 using FetchMe.Logic.Interface;
@@ -28,7 +29,7 @@ namespace FetchMe.Logic
 					throw new NullReferenceException("Return value is null");
 				}
 
-				return result;
+				return Mapper.Map(result);
 			}
 			catch (Exception exception)
 			{

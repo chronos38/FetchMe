@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FetchMe.Data;
 using FetchMe.Data.Interface;
 using FetchMe.Dto;
 using FetchMe.Logic.Interface;
@@ -49,8 +50,8 @@ namespace FetchMe.Logic
 			try
 			{
 				// Use divide and conquer for efficiency
-				bothPointsTask = GetPointsAsync(teamToCheck, Double, GameRepository.GetGames(teamToCheck, againstTeam));
-				singlePoints = GetPoints(teamToCheck, Single, GameRepository.GetGames(teamToCheck));
+				bothPointsTask = GetPointsAsync(teamToCheck, againstTeam, Double, GameRepository.GetGames);
+				singlePoints = GetPoints(teamToCheck, Single, GameRepository.GetGames(Mapper.Map(teamToCheck)).ToArray().Select(Mapper.Map));
 				bothPointsTask.Wait();
 			}
 			catch (AggregateException exception)
@@ -60,6 +61,16 @@ namespace FetchMe.Logic
 
 			var bothPoints = bothPointsTask.Result;
 			return (singlePoints + bothPoints)/MaxPoints;
+		}
+
+		private Task<float> GetPointsAsync(TeamDto teamToCheck, TeamDto againstTeam, Points points, Func<Team, Team, IEnumerable<Game>> getGames)
+		{
+			// Return a task which calculates the probability of a LINQ to SQL query for performance optimization
+			return
+				Task.Run(
+					() =>
+						GetPoints(teamToCheck, points,
+							getGames(Mapper.Map(teamToCheck), Mapper.Map(againstTeam)).ToArray().Select(Mapper.Map)));
 		}
 
 		private Task<float> GetPointsAsync(TeamDto teamToCheck, Points pointsToAdd, IEnumerable<GameDto> gameDtos)

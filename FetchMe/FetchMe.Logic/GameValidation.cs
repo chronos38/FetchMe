@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using FetchMe.Data;
 using FetchMe.Data.Interface;
 using FetchMe.Dto;
 using FetchMe.Logic.Interface;
@@ -29,18 +30,18 @@ namespace FetchMe.Logic
 				}
 				if (!TeamExists(game.Team1.Team))
 				{
-					TeamRepository.AddTeam(game.Team1.Team);
+					TeamRepository.AddTeam(Mapper.Map(game.Team1.Team));
 				}
 				if (!TeamExists(game.Team2.Team))
 				{
-					TeamRepository.AddTeam(game.Team2.Team);
+					TeamRepository.AddTeam(Mapper.Map(game.Team2.Team));
 				}
 				if (GameExists(game))
 				{
 					return true;
 				}
 
-				GameRepository.AddGame(game);
+				GameRepository.AddGame(Mapper.Map(game));
 				return true;
 			}
 			catch (Exception exception)
@@ -51,7 +52,11 @@ namespace FetchMe.Logic
 
 		private bool GameExists(GameDto game)
 		{
-			return GameRepository.GetGames(game.Team1.Team, game.Team2.Team).Contains(game);
+			return
+				GameRepository.GetGames(Mapper.Map(game.Team1.Team), Mapper.Map(game.Team2.Team))
+					.ToArray()
+					.Select(Mapper.Map)
+					.Contains(game);
 		}
 
 		private bool ValidateGame(GameDto game)

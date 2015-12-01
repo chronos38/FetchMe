@@ -15,26 +15,25 @@ namespace FetchMe.Data
 			Model = model;
 		}
 
-		public void AddGame(GameDto game)
+		public void AddGame(Game game)
 		{
-			game.Id = Model.Games.Add(Mapper.Map(game)).Id;
+			Model.Games.Add(game);
 		}
 
-		public IEnumerable<GameDto> GetGames(TeamDto fromTeam)
+		public IEnumerable<Game> GetGames(Team fromTeam)
 		{
-			var validator =
-				new Func<Team, bool>(t => string.Equals(t.Name, fromTeam.Name, StringComparison.CurrentCultureIgnoreCase));
-			return from g in Model.Games where validator(g.Team1.Team) || validator(g.Team2.Team) select Mapper.Map(g);
+			return from g in Model.Games
+				where g.Team1.Team.Name == fromTeam.Name || g.Team2.Team.Name == fromTeam.Name
+				select g;
 		}
 
-		public IEnumerable<GameDto> GetGames(TeamDto fromFirstTeam, TeamDto againstSecondTeam)
+		public IEnumerable<Game> GetGames(Team fromFirstTeam, Team againstSecondTeam)
 		{
-			var validator =
-				new Func<Team, bool>(
-					t =>
-						string.Equals(t.Name, fromFirstTeam.Name, StringComparison.CurrentCultureIgnoreCase) ||
-						string.Equals(t.Name, againstSecondTeam.Name, StringComparison.CurrentCultureIgnoreCase));
-			return from g in Model.Games where validator(g.Team1.Team) && validator(g.Team2.Team) select Mapper.Map(g);
+			return from g in Model.Games
+				where
+					(g.Team1.Team.Name == fromFirstTeam.Name || g.Team1.Team.Name == againstSecondTeam.Name) &&
+					(g.Team2.Team.Name == fromFirstTeam.Name || g.Team2.Team.Name == againstSecondTeam.Name)
+				select g;
 		}
 	}
 }

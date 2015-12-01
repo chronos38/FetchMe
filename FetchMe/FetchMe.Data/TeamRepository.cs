@@ -15,34 +15,29 @@ namespace FetchMe.Data
 			Model = model;
 		}
 
-		public void AddTeam(TeamDto teamDto)
+		public void AddTeam(Team team)
 		{
-			teamDto.Id = Model.Teams.Add(Mapper.Map(teamDto)).Id;
+			Model.Teams.Add(team);
 		}
 
-		public TeamDto GetTeam(int id)
+		public Team GetTeam(int id)
 		{
-			return (from t in Model.Teams where t.Id == id select Mapper.Map(t)).FirstOrDefault();
+			return (from t in Model.Teams where t.Id == id select t).FirstOrDefault();
 		}
 
-		public TeamDto GetTeam(string name)
+		public Team GetTeam(string name)
 		{
-			return
-				(from t in Model.Teams
-					where string.Equals(t.Name, name, StringComparison.CurrentCultureIgnoreCase)
-					select Mapper.Map(t)).FirstOrDefault();
+			return (from t in Model.Teams where t.Name == name select t).FirstOrDefault();
 		}
 
-		public IEnumerable<TeamDto> GetTeams(string country)
+		public IEnumerable<Team> GetTeams(string country)
 		{
-			return from t in Model.Teams
-				where string.Equals(t.Country, country, StringComparison.CurrentCultureIgnoreCase)
-				select Mapper.Map(t);
+			return from t in Model.Teams where t.Country == country select t;
 		}
 
-		public IEnumerable<TeamDto> GetAllTeams()
+		public IEnumerable<Team> GetAllTeams()
 		{
-			return from t in Model.Teams select Mapper.Map(t);
+			return from t in Model.Teams select t;
 		}
 	}
 }
